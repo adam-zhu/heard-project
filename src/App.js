@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Account from './Account';
+import { usePersistReducer } from './customHooks';
+import reducer, { INITIAL_STATE } from './reducer';
+import { StateContext, DispatchContext } from './contexts';
 
-function App() {
+const App = () => {
+  const [state, dispatch] = usePersistReducer(reducer, INITIAL_STATE);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StateContext.Provider value={state}>
+      <DispatchContext.Provider value={dispatch}>
+        <div className='app-container'>
+          <h1 className='app-title'>
+            Welcome to the Heard Family Expenses Tracker
+          </h1>
+          <Account />
+        </div>
+      </DispatchContext.Provider>
+    </StateContext.Provider>
   );
-}
+};
 
 export default App;
