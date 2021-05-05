@@ -1,0 +1,13 @@
+- started off by reading the product specs and modelling out the data, then created a REST API esque set of structured interactions and started building frontend against that
+  - currently data is just persisted to localStorage and there is no separate API/db entity, just a client bundle
+- login features are faked out
+- factored everything primarily according to getting as many features built as quickly as possible
+  - if I had more time I'd've done a better job with creating constructs to manage the user and account contexts and to manage data in a more efficient manner
+- did budget timeframes as just interval from whenever budget was made rather than an interval that'd lock to atomic weeks/months
+- left to do:
+  - expense approval
+  - edit expense, edit budget
+  - features regarding parents managing children's budgets
+  - real login
+  - real data persistence
+  - styling
