@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+- started off by reading the product specs and modelling out the data, then created a REST API esque set of structured interactions and started building frontend against that
+  - currently data is just persisted to localStorage and there is no separate API/db entity, just a client bundle
+- login features are faked out
+- factored everything primarily according to getting as many features built as quickly as possible
+  - if I had more time I'd've done a better job with creating constructs to manage the user and account contexts and to manage data in a more efficient and maintainable manner
+    - would have atomic state management pairing with each data element rather than just one fatty reducer
+- did budget timeframes as just interval from whenever budget was made rather than an interval that'd lock to atomic weeks/months
+- left to do:
+  - expense approval
+  - edit expense, edit budget
+  - features regarding parents managing children's budgets
+  - real login
+  - real data persistence
+  - styling
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+// data model
 
-## Available Scripts
+account {
+  id: string,
+  name: string
+}
 
-In the project directory, you can run:
+user {
+  id: string,
+  accountId: string,
+  name: string,
+  type: enum['parent', 'child']
+}
 
-### `yarn start`
+category {
+  id: string.
+  accountId: string,
+  name: string
+}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+budget {
+  id: string.
+  accountId: string,
+  userId: string,
+  name: string?,
+  centAmount: number,
+  categoryId: string,
+  timeframe: enum['weekly', 'monthly'],
+  dateCreated: number
+}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+expense {
+  id: string,
+  budgetId: string,
+  userId: string,
+  centAmount: number,
+  approved: boolean?,
+  date: number
+}
 
-### `yarn test`
+// reducer action types
+// this is kind of like a REST api I guess?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const ACCOUNT_CREATED = 'ACCOUNT_CREATED';
+/*
+  payload {
+    accountId: string,
+    name: string
+  }
+*/
 
-### `yarn build`
+const ACCOUNT_SIGNIN = 'ACCOUNT_SIGNIN';
+/*
+  payload {
+    accountId: string
+  }
+*/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const ACCOUNT_SIGNOUT = 'ACCOUNT_SIGNOUT';
+/*
+  payload {
+    accountId: string
+  }
+*/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const USER_CREATED = 'USER_CREATED';
+/*
+  payload {
+    userId: string,
+    accountId: string,
+    name: string,
+    type: enum['parent', 'child']
+  }
+*/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const USER_SIGNIN = 'USER_SIGNIN';
+/*
+  payload {
+    userId: string
+  }
+*/
 
-### `yarn eject`
+const USER_SIGNOUT = 'USER_SIGNOUT';
+/*
+  payload {
+    userId: string
+  }
+*/
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+const CATEGORY_CREATED = 'CATEGORY_CREATED';
+/*
+  payload {
+    id: string,
+    accountId: string,
+    name: string
+  }
+*/
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const CATEGORY_CHANGED = 'CATEGORY_CHANGED';
+/*
+  payload {
+    id: string,
+    name: string
+  }
+*/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+const BUDGET_CREATED = 'BUDGET_CREATED';
+/*
+  payload {
+    id: string.
+    accountId: string,
+    userId: string,
+    name: string?,
+    centAmount: number,
+    categoryId: string?,
+    timeframe: enum['weekly', 'monthly'],
+    startDate: number
+  }
+*/
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+const BUDGET_CHANGED = 'BUDGET_CHANGED';
+/*
+  payload {
+    id: string.
+    userId: string,
+    name: string?,
+    centAmount: number,
+    categoryId: string?,
+    timeframe: enum['weekly', 'monthly'],
+    startDate: number
+  }
+*/
 
-## Learn More
+const EXPENSE_CREATED = 'EXPENSE_CREATED';
+/*
+  payload {
+    id: string,
+    budgetId: string.
+    userId: string,
+    centAmount: number,
+    approved: boolean?
+    date: number
+  }
+*/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+const EXPENSE_CHANGED = 'EXPENSE_CHANGED';
+/*
+  payload {
+    id: string,
+    userId: string,
+    centAmount: number,
+    approved: boolean?,
+    date: number
+  }
+*/
+```
