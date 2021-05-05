@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/heard-project/static/css/main.a9b26a4c.chunk.css",
+    "main.js": "/heard-project/static/js/main.8afe8e81.chunk.js",
+    "main.js.map": "/heard-project/static/js/main.8afe8e81.chunk.js.map",
+    "runtime-main.js": "/heard-project/static/js/runtime-main.cfef73c3.js",
+    "runtime-main.js.map": "/heard-project/static/js/runtime-main.cfef73c3.js.map",
+    "static/js/2.9f49e06a.chunk.js": "/heard-project/static/js/2.9f49e06a.chunk.js",
+    "static/js/2.9f49e06a.chunk.js.map": "/heard-project/static/js/2.9f49e06a.chunk.js.map",
+    "static/js/3.9a6c76e7.chunk.js": "/heard-project/static/js/3.9a6c76e7.chunk.js",
+    "static/js/3.9a6c76e7.chunk.js.map": "/heard-project/static/js/3.9a6c76e7.chunk.js.map",
+    "index.html": "/heard-project/index.html",
+    "static/css/main.a9b26a4c.chunk.css.map": "/heard-project/static/css/main.a9b26a4c.chunk.css.map",
+    "static/js/2.9f49e06a.chunk.js.LICENSE.txt": "/heard-project/static/js/2.9f49e06a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cfef73c3.js",
+    "static/js/2.9f49e06a.chunk.js",
+    "static/css/main.a9b26a4c.chunk.css",
+    "static/js/main.8afe8e81.chunk.js"
+  ]
+}
