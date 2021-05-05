@@ -2,8 +2,11 @@
   - currently data is just persisted to localStorage and there is no separate API/db entity, just a client bundle
 - login features are faked out
 - factored everything primarily according to getting as many features built as quickly as possible
-  - if I had more time I'd've done a better job with creating constructs to manage the user and account contexts and to manage data in a more efficient and maintainable manner
-    - would have atomic state management pairing with each data element rather than just one fatty reducer
+  - if I had more time
+    - I'd've done a better job with creating constructs to manage the user and account contexts and to manage data in a more efficient and maintainable manner
+      - would not have built things in a drilldown fashion, that was for the sake of velocity mainly, would've gone for a flatter structure of components to provide better visibility of architecture at a higher level
+      - would have atomic state management pairing with each data element rather than just one fatty reducer
+    - would have built a real API and moved the id generation and stuff like that back there
 - did budget timeframes as just interval from whenever budget was made rather than an interval that'd lock to atomic weeks/months
 - left to do:
   - expense approval
